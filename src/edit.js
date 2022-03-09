@@ -39,7 +39,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const options = Object.keys( countries ).map( ( code ) => ( {
 		value: code,
-		label: getEmojiFlag( code ) + '  ' + countries[ code ] + ' — ' + code,
+		label: `${ getEmojiFlag( code ) } ${ countries[ code ] } — ${ code }`,
 	} ) );
 
 	const [ isPreview, setPreview ] = useState();
