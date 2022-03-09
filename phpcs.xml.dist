@@ -11,6 +11,7 @@
 	</rule>
 
 	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-VIP-Go"/>
 	<rule ref="WordPress.WP.I18n"/>
 	<config name="text_domain" value="xwp-country-card"/>
 
@@ -23,5 +24,6 @@
 
 	<exclude-pattern>/build/*</exclude-pattern>
 	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/tools/WordPress/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 </ruleset>

@@ -8,6 +8,8 @@ yarn-error.log*
 # Coverage directory used by tools like istanbul
 coverage
 
+tools/*
+
 # Compiled assets
 build/
 

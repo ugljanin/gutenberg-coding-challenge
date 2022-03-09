@@ -7,10 +7,14 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import './style.scss';
-import edit from './edit';
-import save from './save';
+import metadata from './block.json';
+import Edit from './edit';
+import Save from './save';
 
-registerBlockType( 'xwp/country-card', {
-	edit,
-	save,
-} );
+const { name } = metadata;
+const settings = {
+	edit: Edit,
+	save: Save,
+};
+
+registerBlockType( name, settings );

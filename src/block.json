@@ -19,7 +19,7 @@
 		"relatedPosts": {
 			"type": "array",
 			"source": "query",
-			"selector": ".related-post",
+			"selector": ".related-posts__post",
 			"query": {
 				"title": {
 					"type": "string",
