@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { edit, globe } from '@wordpress/icons';
+import { useSelect } from '@wordpress/data';
 import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	ComboboxControl,
@@ -32,6 +33,10 @@ import Preview from './preview';
 export default function Edit( { attributes, setAttributes } ) {
 	const { countryCode, relatedPosts } = attributes;
 
+	const postId = useSelect( ( select ) => {
+		return select( 'core/editor' ).getCurrentPostId();
+	} );
+
 	const options = Object.keys( countries ).map( ( code ) => ( {
 		value: code,
 		label: getEmojiFlag( code ) + '  ' + countries[ code ] + ' — ' + code,
@@ -57,8 +62,6 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	useEffect( () => {
 		async function getRelatedPosts() {
-			const postId = window.location.href.match( /post=([\d]+)/ )[ 1 ];
-
 			const response = await window.fetch(
 				`/wp-json/wp/v2/posts?search=${ countries[ countryCode ] }&exclude=${ postId }`
 			);
@@ -79,7 +82,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		}
 
 		getRelatedPosts();
-	}, [ countryCode, setAttributes ] );
+	}, [ countryCode, postId, setAttributes ] );
 
 	return (
 		<div { ...useBlockProps() }>
